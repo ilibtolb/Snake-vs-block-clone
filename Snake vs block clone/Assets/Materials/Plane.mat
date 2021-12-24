@@ -21,14 +21,13 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Plane
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 79c564637216ca24bbbce7fad3e3918a, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
-  stringTagMap:
-    RenderType: Opaque
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -119,6 +118,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_1aa25149bf6c471fbabc6b11e6a16c29: {r: 0.07075471, g: 0.17866696, b: 1, a: 0}
+    - Color_7e17c89edd86483785e50a1ea9a3aa7d: {r: 0, g: 1, b: 0.92718434, a: 0}
     - _BaseColor: {r: 0.2214756, g: 0.5906128, b: 0.5943396, a: 1}
     - _Color: {r: 0.34442863, g: 0.55519503, b: 0.5660378, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

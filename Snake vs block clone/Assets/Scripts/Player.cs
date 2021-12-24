@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class Player : MonoBehaviour
     public TextMeshPro Count;
     public PlaneMove plane;
     public GameObject LosePanel;
+    public GameObject WinPanel;
+    public LevelText levelText;
 
     private void Awake()
     {
@@ -61,6 +64,7 @@ public class Player : MonoBehaviour
             for (int i = 0; i < HealthPlus; i++)
             {
 
+
                 Vector3 NewBallPosition = new Vector3(LastBall.Peek().transform.position.x, LastBall.Peek().transform.position.y - 1.1f, -0.6f);
                 Quaternion rotation = Quaternion.Euler(0, 0, 0);
                 GameObject NewBall = Instantiate(Ball, NewBallPosition, rotation);
@@ -70,18 +74,10 @@ public class Player : MonoBehaviour
                 HingeJointLastBall.axis = new Vector3(0, 0, 1);
                 HingeJointLastBall.useLimits = true;
                 JointLimits BallLimits = HingeJointLastBall.limits;
-            if (HealthCount == 1 && i == 0)
-            {
-                BallLimits.min = -15f;
-                BallLimits.max = 15f;
-            }
-            else
-            {
-                BallLimits.min = 0;
-                BallLimits.max = 0;
-            }
-                BallLimits.bounciness = 0;
-                BallLimits.bounceMinVelocity = 0;
+                BallLimits.min = -5f;
+                BallLimits.max = 5f;
+                BallLimits.bounciness = 1;
+                BallLimits.bounceMinVelocity = 1;
                 HingeJointLastBall.limits = BallLimits;
 
                 LastBall.Push(NewBall);
@@ -111,5 +107,18 @@ public class Player : MonoBehaviour
     {
         StopButton = false;
         player.velocity = new Vector3(0, 0, 0);
+    }
+
+    public void ReloadLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        LosePanel.SetActive(false);
+    }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        levelText.NextLevel();
+        WinPanel.SetActive(false);
     }
 }
